@@ -10,22 +10,6 @@ islenmis_veriler = []
 etiketler = []
 hedef_uzunluk = 3000 
 
-print("--- 1. AŞAMA: ZİP DOSYALARI ÇIKARTILIYOR ---")
-# Bu bölüm klasördeki tüm .zip dosyalarını bulup otomatik olarak klasöre çıkartır
-for kok_dizin, alt_dizinler, dosyalar in os.walk(ana_klasor):
-    for dosya in dosyalar:
-        if dosya.lower().endswith('.zip'):
-            zip_yolu = os.path.join(kok_dizin, dosya)
-            cikartma_hedefi = os.path.join(kok_dizin, dosya[:-4]) # Zip isminde klasör oluştur
-            
-            # Eğer daha önce çıkartılmamışsa çıkart
-            if not os.path.exists(cikartma_hedefi):
-                print(f"Fermuar açılıyor: {dosya}")
-                try:
-                    with zipfile.ZipFile(zip_yolu, 'r') as zip_ref:
-                        zip_ref.extractall(cikartma_hedefi)
-                except Exception as e:
-                    print(f"Bozuk zip dosyası atlandı: {dosya}")
 
 print("\n--- 2. AŞAMA: VERİ MADENCİLİĞİ BAŞLADI ---")
 for kok_dizin, alt_dizinler, dosyalar in os.walk(ana_klasor):
